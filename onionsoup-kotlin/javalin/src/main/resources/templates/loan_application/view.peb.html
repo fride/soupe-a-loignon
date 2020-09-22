@@ -1,0 +1,148 @@
+{% extends "templates/base.peb.html" %}
+
+{% block title %} Loan Applications {% endblock %}
+
+{% block content %}
+
+<h2>Loan Applications</h2>
+<article id="loan-application-dashboard" class="card-container">
+    <section id="loan-application-details" class="card">
+        <table>
+            <caption>
+                <h3>Loan Application Details</h3>
+            </caption>
+            <tbody>
+            <tr>
+                <th colspan="2">
+                    <h4>Customer</h4>
+                </th>
+            </tr>
+            <tr class="customer-data">
+                <th class="label">First Name</th>
+                <td>
+                    {{ form.details.customer.customerFirstName }}
+                </td>
+            </tr>
+            <tr class="customer-data">
+                <th class="label">Last Name</th>
+                <td>{{ form.details.customer.customerLastName }}
+                </td>
+            </tr>
+            <tr class="customer-data">
+                <th class="label">Birth Date</th>
+                <td>{{ form.details.customer.customerBirthDate }}
+                </td>
+            </tr>
+            <tr class="customer-data">
+                <th class="label">Monthly income</th>
+                <td>
+                    {{ form.details.customer.customerMonthlyIncome }}
+                </td>
+            </tr>
+            <tr class="customer-data">
+                <th class="label">Street</th>
+                <td>
+                    {{ form.details.customer.customerStreet }}
+                </td>
+            </tr>
+            <tr class="customer-data">
+                <th class="label">City</th>
+                <td>
+                    {{ form.details.customer.customerCity }}
+                </td>
+            </tr>
+            <tr class="customer-data">
+                <th class="label">Zip Code</th>
+                <td>
+                    {{ form.details.customer.customerZipCode }}
+                </td>
+            </tr>
+            <tr class="customer-data">
+                <th class="label">Country</th>
+                <td>
+                    {{ form.details.customer.customerCountry }}
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="2">
+                    <h4>Loan</h4>
+                </th>
+            </tr>
+            <tr>
+                <th class="label">Amount</th>
+                <td>
+                    <span>{{ form.details.loan.amount }}</span>
+                </td>
+            </tr>
+            <tr>
+                <th class="label">Duration</th>
+                <td>
+                    {{ form.details.loan.duration }}
+                </td>
+            </tr>
+            <tr>
+                <th class="label">interest rate</th>
+                <td>
+                    <span>{{ form.details.loan.interestRate }}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="2">
+                    <h4>Property</h4>
+                </th>
+            </tr>
+
+            <tr>
+                <th class="label">Value</th>
+                <td><span>{{ form.details.property.value }}</span>
+                </td>
+            </tr>
+            <tr>
+                <th class="label">Street</th>
+                <td>
+                    <span>{{ form.details.property.propertyStreet }}</span><br>
+                </td>
+            </tr>
+            <tr>
+                <th class="label">Zip Code</th>
+                <td>
+                    <span>{{ form.details.property.propertyZipCode }}</span>
+                </td>
+            </tr>
+            <tr>
+                <th class="label">City</th>
+                <td>
+                    <span>{{ form.details.property.propertyCity }}</span>
+                </td>
+            </tr>
+            <tr>
+                <th class="label">Country</th>
+                <td>
+                    <span>{{ form.details.property.propertyCountry }}</span>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <h4>Scoreing</h4>
+                </th>
+            </tr>
+            <tr>
+                <th>Scoring Result</th>
+                <td>fufu</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>none/rejected/accepted</td>
+            </tr>
+            </tbody>
+        </table>
+        <form method="post">
+            <button type="submit">Score Loan Application</button>
+        </form>
+
+    </section>
+</article>
+
+{% endblock %}

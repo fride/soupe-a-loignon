@@ -1,0 +1,19 @@
+{% extends "templates/base.peb.html" %}
+
+{% block title %} Edit Operator {% endblock %}
+
+{% block navigation %}
+<a href="{{ cancel }}">View</a>
+{% endblock %}
+
+{% block content %}
+<section class="header">
+    <h2>New Operator</h2>
+</section>
+
+<article id="operator-details" class="card-container">
+    <section id="operator-data" class="card">
+        {% include "templates/operator/form.peb.html" %}
+    </section>
+</article>
+{% endblock %}

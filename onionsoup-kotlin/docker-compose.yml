@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+
+  docker:
+    image: "boky/postfix"
+    environment:
+      - ALLOWED_SENDER_DOMAINS=example.com
+    ports:
+      - "1587:587"
+
+  #    https://github.com/EventStore/eventstore-docker
+  nats-main:
+    image: "nats"
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+      - "6222:6222"
+
+  postgres-de:
+    image: "postgres"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+

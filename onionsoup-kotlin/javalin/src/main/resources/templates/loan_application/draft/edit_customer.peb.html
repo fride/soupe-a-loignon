@@ -1,0 +1,56 @@
+{% extends "templates/base.peb.html" %}
+
+{% block title %} Edit Loan Data {% endblock %}
+
+{% block navigation %}
+    <a href="{{ cancel }}">View</a>
+{% endblock %}
+
+{% block content %}
+<div class="card" id="customer">
+    <form action="{{ draft.action }}"
+          method="post"
+          class="form">
+        <h4>Customer</h4>
+
+        <label for="customerFirstName">First Name</label>
+        <input type="text" id="customerFirstName" name="customerFirstName"
+               value="{{ draft.customer.customerFirstName }}">
+
+        <label for="customerLastName">Last Name</label>
+        <input type="text" id="customerLastName" name="customerLastName"
+               value="{{ draft.customer.customerLastName }}">
+
+        <label for="customerBirthDate">Date of Birth</label>
+        <input type="date" id="customerBirthDate" name="customerBirthDate"
+               value="{{ draft.customer.customerBirthDate }}">
+
+        <label for="customerMonthlyIncome">Monthly Income</label>
+        <input type="number" id="customerMonthlyIncome" name="customerMonthlyIncome"
+               value="{{ draft.customer.customerMonthlyIncome }}">
+
+        <h4>Address</h4>
+
+        <label for="customerStreet">Street</label>
+        <input type="text" id="customerStreet" name="customerStreet"
+               value="{{ draft.customer.customerStreet }}">
+
+        <label for="customerZipCode">ZipCode</label>
+        <input type="text" id="customerZipCode" name="customerZipCode"
+               value="{{ draft.customer.customerZipCode }}">
+
+        <label for="customerCity">City</label>
+        <input type="text" id="customerCity" name="customerCity" value="{{ draft.customer.customerCity }}">
+
+        <label for="customerCountry">Country</label>
+        <input type="text" id="customerCountry" name="customerCountry"
+               value="{{ draft.customer.customerCountry }}">
+
+        <p></p>
+        <p>
+            <button type="submit">Update Customer Data</button>
+            <a href="{{ cancel }}">Cancel</a>
+        <p>
+    </form>
+</div>
+{% endblock %}

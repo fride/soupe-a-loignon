@@ -1,0 +1,42 @@
+{% extends "templates/base.peb.html" %}
+
+{% block title %} Loan Applications {% endblock %}
+
+{% block content %}
+<h2>Loan Applications</h2>
+<div id="operators">
+    <table>
+        <thead>
+        <tr>
+            <th>Handle</th>
+            <th>Name</th>
+            <th>Competence Level</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for operator in operators %}
+        <tr class="operator">
+            <td>
+                <a href="/admin/operator/{{ operator.operatorHandle }}">{{ operator.operatorHandle }}</a>
+            </td>
+            <td>
+                {{ operator.name.secondName }}, {{ operator.name.firstName }}
+            </td>
+            <td>
+                {{ operator.competenceLevel }}
+            </td>
+            {% else %}
+<!--             </td>-->
+            {% endfor %}
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <th></th>
+            <td><a href="{{ new }} ">Add new Operator</a></td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+{% endblock %}

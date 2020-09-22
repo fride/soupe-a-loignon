@@ -1,0 +1,42 @@
+{% extends "templates/base.peb.html" %}
+
+{% block title %} Loan Applications {% endblock %}
+
+{% block content %}
+
+<h2>Loan Applications</h2>
+<article id="loan-application-dashboard" class="card-container">
+    <section id="loan-application-list" class="card">
+        <table>
+            <thead>
+            <tr>
+                <th>Customer</th>
+                <th>changed at</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for loanApplication in dashboard.loanApplications %}
+            <tr class="loan-application">
+                <td>
+                    <a up-target="#loan-application-details" href="/loan_application/{{ loanApplication.id }}">{{ loanApplication.name }}</a>
+                </td>
+                <td>
+                    {{ loanApplication.changedAt }}
+                </td>
+                <td>
+                    {{ loanApplication.state }}
+                </td>
+                {% else %}
+                <td colspan="4">
+                    There are no Loan applications.
+                </td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <section id="loan-application-details" class="card">
+    </section>
+</article>
+
+{% endblock %}

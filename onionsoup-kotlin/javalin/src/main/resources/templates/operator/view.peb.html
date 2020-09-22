@@ -1,0 +1,46 @@
+{% extends "templates/base.peb.html" %}
+
+{% block title %} Loan Applications {% endblock %}
+
+{% block content %}
+<section class="header">
+    <h2>Operator {{ operator.operatorHandle }} </h2>
+</section>
+
+<article id="operator-details" class="card-container">
+    <section id="operator-data" class="card">
+    <table>
+        <tbody>
+        <tr class="operator">
+            <th class="label">
+                Login
+            </th>
+            <td>
+                {{ operator.operatorHandle }}
+            </td>
+        </tr>
+        <tr>
+            <th class="label">Name</th>
+            <td>
+                {{ operator.name.secondName }}, {{ operator.name.firstName }}
+            </td>
+        </tr>
+        <tr>
+            <th class="label">Competence Level</th>
+            <td>
+                {{ operator.competenceLevel }}
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td></td>
+            <td>
+                <a href="{{ edit }}" up-target="#operator-data">Edit Operator</a>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+    </section>
+</article>
+{% endblock %}

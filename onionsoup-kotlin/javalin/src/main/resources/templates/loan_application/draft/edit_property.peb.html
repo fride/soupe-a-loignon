@@ -1,0 +1,38 @@
+{% extends "templates/base.peb.html" %}
+
+{% block title %} Edit Property Data {% endblock %}
+
+{% block navigation %}
+    <a href="{{ cancel }}">View</a>
+{% endblock %}
+
+{% block content %}
+<section id="property" class="card">
+    <form action="{{ form.action }}"
+          method="post"
+          class="form">
+
+        <label for="value">Value</label>
+        <input type="number" id="value"
+               name="value"
+               value="{{ form.value }}">
+
+        <label for="propertyStreet">Street</label>
+        <input type="text" id="propertyStreet" name="propertyStreet" value="{{ form.propertyStreet }}">
+
+        <label for="propertyZipCode">ZipCode</label>
+        <input type="text" id="propertyZipCode" name="propertyZipCode" value="{{ form.propertyZipCode }}">
+
+        <label for="propertyCity">City</label>
+        <input type="text" id="propertyCity" name="propertyCity" value="{{ form.propertyCity }}">
+
+        <label for="propertyCountry">Country</label>
+        <input type="text" id="propertyCountry" name="propertyCountry" value="{{ form.propertyCountry }}">
+        <p></p>
+        <p>
+            <button type="submit">Update Property Data</button>
+            <a href="{{ cancel }}">Cancel</a>
+        </p>
+    </form>
+</section>
+{% endblock %}

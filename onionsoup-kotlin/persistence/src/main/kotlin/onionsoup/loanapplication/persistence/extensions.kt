@@ -1,0 +1,81 @@
+package onionsoup.loanapplication.persistence
+
+import arrow.core.Option
+import arrow.fx.IO
+import onionsoup.loanapplication.persistence.sql.public_.Tables
+import org.jooq.Configuration
+import org.jooq.DSLContext
+import java.math.BigDecimal
+import java.math.RoundingMode
+import java.util.Optional
+
+fun BigDecimal?.asEuroCents(): Int? = this?.let {
+  (it.setScale(2, RoundingMode.HALF_UP) * BigDecimal("100")).toInt()
+}
+
+fun Int?.fromEuroCents(): BigDecimal? = this?.let {
+  BigDecimal.valueOf(it.toLong()).setScale(2, RoundingMode.HALF_UP).divide(BigDecimal("100"))
+}
+
+fun <T> Optional<T>.toOption(): Option<T> =
+  if (this.isEmpty) {
+    Option.empty()
+  } else {
+    Option.just(this.get())
+  }
+
+fun <T> Configuration.readOnlyTransaction(f: (DSLContext) -> IO<T>): IO<T> =
+  this.dsl().transactionResult { ctx ->
+    f(ctx.dsl())
+  }
+
+internal fun DSLContext.selectDraftDetails() =
+  this.select(
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_FIRST_NAME,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_LAST_NAME,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_BIRTH_DATE,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_MONTHLY_INCOME,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_BIRTH_DATE,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_STREET,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_ZIP_CODE,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_CITY,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_COUNTRY,
+
+    Tables.LOAN_APPLICATION_DETAILS.LOAN_AMOUNT,
+    Tables.LOAN_APPLICATION_DETAILS.LOAN_DURATION,
+    Tables.LOAN_APPLICATION_DETAILS.LOAN_INTEREST_RATE,
+
+    Tables.LOAN_APPLICATION_DETAILS.PROPERTY_VALUE,
+    Tables.LOAN_APPLICATION_DETAILS.PROPERTY_STREET,
+    Tables.LOAN_APPLICATION_DETAILS.PROPERTY_ZIP_CODE,
+    Tables.LOAN_APPLICATION_DETAILS.PROPERTY_CITY,
+    Tables.LOAN_APPLICATION_DETAILS.PROPERTY_CUNTRY,
+    Tables.LOAN_APPLICATION_DETAILS.OPERATOR)
+
+internal fun DSLContext.selectLoanApplicationDetails() =
+  this.select(
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_FIRST_NAME,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_LAST_NAME,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_BIRTH_DATE,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_MONTHLY_INCOME,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_BIRTH_DATE,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_STREET,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_ZIP_CODE,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_CITY,
+    Tables.LOAN_APPLICATION_DETAILS.CUSTOMER_COUNTRY,
+
+    Tables.LOAN_APPLICATION_DETAILS.LOAN_AMOUNT,
+    Tables.LOAN_APPLICATION_DETAILS.LOAN_DURATION,
+    Tables.LOAN_APPLICATION_DETAILS.LOAN_INTEREST_RATE,
+
+    Tables.LOAN_APPLICATION_DETAILS.PROPERTY_VALUE,
+    Tables.LOAN_APPLICATION_DETAILS.PROPERTY_STREET,
+    Tables.LOAN_APPLICATION_DETAILS.PROPERTY_ZIP_CODE,
+    Tables.LOAN_APPLICATION_DETAILS.PROPERTY_CITY,
+    Tables.LOAN_APPLICATION_DETAILS.PROPERTY_CUNTRY,
+
+    Tables.LOAN_APPLICATION_DETAILS.OPERATOR,
+    Tables.LOAN_APPLICATION_DETAILS.SUBMITTED_AT,
+    Tables.LOAN_APPLICATION_DETAILS.ACCEPTED_AT,
+    Tables.LOAN_APPLICATION_DETAILS.REJECTED_AT,
+    Tables.LOAN_APPLICATION_DETAILS.CHECKED_AT)

@@ -1,0 +1,30 @@
+<form method="post"  class="form" action="{{ action }} ">
+    {% if isNew %}
+    <label for="handle">Handle</label>
+    <input type="text" id="handle"
+           name="handle"
+           value="{{ operator.operatorHandle }}">
+    {% else %}
+    <input type="hidden" name="handle" value="{{ operator.operatorHandle }}">
+    {% endif %}
+
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName"
+           name="firstName"
+           value="{{ operator.name.firstName }}">
+
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName"
+           name="lastName"
+           value="{{ operator.name.secondName }}">
+
+    <label for="competenceLevel">Competence Level</label>
+    <input type="number" id="competenceLevel"
+           name="competenceLevel"
+           value="{{ operator.competenceLevel }}">
+    <p></p>
+    <p>
+        <button type="submit">Update Operator Data</button>
+        <a href="{{ cancel }}">Cancel</a>
+    </p>
+</form>

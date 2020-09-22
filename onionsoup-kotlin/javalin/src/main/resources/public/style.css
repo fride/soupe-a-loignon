@@ -1,0 +1,99 @@
+
+.error {
+    color: crimson;
+}
+
+#main {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: black;
+    border-bottom: groove;
+}
+.navigation a {
+    padding: 0.1em;
+    color: gray;
+    text-decoration: none;
+}
+.navigation a:hover, .navigation a:active {
+    color: white;
+    text-decoration: underline;
+}
+.navigation h3 {
+    padding: 1em;
+}
+.footer {
+    display: grid;
+    place-items: center;
+}
+
+.card-container {
+    padding: 0.5em;
+    display: flex;
+}
+
+.card {
+    padding: 0.5em;
+    flex: 1 1 150px;
+    margin: 0.1em;
+}
+.header {
+    display: grid;
+    place-items: center;
+}
+h2 .header {
+    display: grid;
+    place-items: center;
+}
+table {
+    border-collapse: collapse;
+}
+/*th, td {*/
+/*    border: 1px solid gray;*/
+/*}*/
+
+/*tbody tr:nth-child(odd) {*/
+/*    background-color: #f2f2f2;*/
+/*}*/
+
+th.label{
+    text-align: right;
+    margin-right: 0.25em;
+    padding-right: 0.5em;
+}
+td .label {
+    font-weight: bold;
+}
+
+
+
+.form {
+    padding: 0.5em;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column: 2;
+}
+
+label{
+    grid-column: 1 / 2;
+    padding: 0.1em;
+}
+input,
+button {
+    grid-column: 2 / 3;
+    padding: 0.1em;
+}
+
+button {
+    background:#ccc;
+    border: none;
+    padding: 8px 8px;
+    text-decoration: none;
+    margin: 5px 4px;
+    cursor: pointer;
+}

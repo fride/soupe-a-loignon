@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>{% block title %}My Website{% endblock %}</title>
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/unpoly@0.62.1/dist/unpoly.min.css" integrity="sha384-Au6LjS9fxDpwn3+26YmukmOumZUmryd8ONenkVIoH4eEPH1tACqLsVfqz9tBrvQy" crossorigin="anonymous">
+    <link rel="stylesheet" href="/kalendae.css" type="text/css" charset="utf-8">
+    <script src="/js/kalendae.standalone.min.js" type="text/javascript" charset="utf-8"></script>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<div id="main">
+    <div id="navigation" class="navigation">
+        <h3>Onion Company</h3>
+        <nav>
+            <a href="/loan_application">Dashboard</a>
+            <a href="/loan_application/draft">Draft</a>
+            <a href="/admin/operator">Operator</a>
+            {% block navigation %}
+            {% endblock %}
+        </nav>
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="footer" class="footer">
+        {% block footer %}
+        Copyright 2020 by the almighty Onion Company.
+        {% endblock %}
+    </div>
+</div>
+<!-- Scripts -->
+<!--<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>-->
+<!--<script src="/js/jquery.smoothState.min.js"></script>-->
+<!--<script src="/js/main.js"></script>-->
+
+<script src="https://unpkg.com/unpoly@0.62.1/dist/unpoly.min.js" integrity="sha384-4PWpXaib3dqJ5r6dXwq3YOW0OFmH7NTjH697AUQR7W4Q0F+GqP+dD0SrBfIc9b2t" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>

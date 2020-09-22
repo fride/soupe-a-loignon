@@ -1,0 +1,12 @@
+---
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+  jackson:
+    deserialization.UNWRAP_ROOT_VALUE: true
+    serialization:
+      WRAP_ROOT_VALUE: false
+      WRITE_DATES_AS_TIMESTAMPS: false

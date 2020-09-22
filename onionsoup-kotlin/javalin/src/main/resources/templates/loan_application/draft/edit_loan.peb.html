@@ -1,0 +1,36 @@
+{% extends "templates/base.peb.html" %}
+
+{% block title %} Edit Loan Data {% endblock %}
+
+{% block navigation %}
+    <a href="{{ cancel }}">View</a>
+{% endblock %}
+
+{% block content %}
+<div class="card" id="loan">
+    <form action="{{ draft.action }}"
+          method="post"
+
+          class="form">
+        <label for="amount">Amount</label>
+        <input type="number"
+               id="amount"
+               name="amount"
+               placeholder="add the amount for this loan"
+               value="{{ draft.amount }}">
+
+        <label for="duration">Duration (in Months)</label>
+        <input type="number" id="duration" name="duration" value="{{ draft.duration }}">
+
+        <label for="interestRate">Interest rate</label>
+        <input type="date" id="interestRate" name="interestRate" value="{{ draft.interestRate }}">
+
+        <label for="submitForm"></label>
+        <p></p>
+        <p>
+            <button id="submitForm" name="submit" type="submit">Update Loan Data</button>
+            <a href="{{ cancel }}">Cancel</a>
+        </p>
+    </form>
+</div>
+{% endblock %}

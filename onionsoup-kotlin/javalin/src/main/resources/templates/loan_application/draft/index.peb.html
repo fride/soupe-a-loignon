@@ -1,0 +1,46 @@
+{% extends "templates/base.peb.html" %}
+
+{% block title %} Loan Applications {% endblock %}
+
+{% block content %}
+    <h2>Loan Applications</h2>
+    <div id="loan-applications">
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>changed at</th>
+                    <th>state</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for loanApplication in dashboard.loanApplications %}
+            <tr class="loan-application">
+                <td>
+                    <a href="/loan_application/draft/{{ loanApplication.id }}">{{ loanApplication.name }}</a>
+                </td>
+                <td>
+                    {{ loanApplication.changedAt }}
+                </td>
+                <td>
+                    {{ loanApplication.state }}
+                </td>
+                {% else %}
+                <td colspan="4">
+                    There are no Loan application. maybe you like to create one?
+                    <form action="" method="post">
+                        <button id="createDraftOpt" ype="submit">Create new draft</button>
+                    </form>
+                </td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+    <form action="" method="post">
+        <button id="createDraft"
+                type="submit">Create new draft</button>
+    </form>
+{% endblock %}

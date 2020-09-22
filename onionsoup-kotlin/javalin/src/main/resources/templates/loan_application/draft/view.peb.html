@@ -1,0 +1,240 @@
+{% extends "templates/base.peb.html" %}
+
+{% block title %} Loan Applications {% endblock %}
+
+{% block content %}
+    <section class="header">
+        <h2>
+            {% if form.details.state == 'draft' %}
+            Loan Application Draft
+            {% else %}
+            Submitted Loan Application
+            {% endif %}
+        </h2>
+    </section>
+    <article id="loan-application-details" class="card-container">
+        <section id="customer" class="card">
+            <table>
+                <caption>
+                    <h3>Customer</h3>
+                </caption>
+                <tbody>
+                <tr class="customer-data">
+                    <th class="label">First Name</th>
+                    <td>
+                        {{ form.details.customer.customerFirstName }}
+                        {% for message in form.details.customer._messages.get('customerFirstName') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="customer-data">
+                    <th class="label">Last Name</th>
+                    <td>{{ form.details.customer.customerLastName }}
+                        {% for message in form.details.customer._messages.get('customerLastName') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="customer-data">
+                    <th class="label">Birth Date</th>
+                    <td>{{ form.details.customer.customerBirthDate }}
+                        {% for message in form.details.customer._messages.get('customerBirthDate') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="customer-data">
+                    <th class="label">Monthly income</th>
+                    <td>
+                        {{ form.details.customer.customerMonthlyIncome }}
+                        {% for message in form.details.customer._messages.get('customerMonthlyIncome') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="customer-data">
+                    <th class="label">Street</th>
+                    <td>
+                        {{ form.details.customer.customerStreet }}
+                        {% for message in form.details.customer._messages.get('customerStreet') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="customer-data">
+                    <th class="label">City</th>
+                    <td>
+                        {{ form.details.customer.customerCity }}
+                        {% for message in form.details.customer._messages.get('customerCity') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="customer-data">
+                    <th class="label">Zip Code</th>
+                    <td>
+                        {{ form.details.customer.customerZipCode }}
+                        {% for message in form.details.customer._messages.get('customerZipCode') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="customer-data">
+                    <th class="label">Country</th>
+                    <td>
+                        {{ form.details.customer.customerCountry }}
+                        {% for message in form.details.customer._messages.get('customerCountry') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            {% if form.editCustomer %}
+                            <a href="{{ form.editCustomer }}" up-target="#customer">Edit customer</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </section>
+        <section id="Loan" class="card">
+            <table>
+                <caption>
+                    <h3>Loan</h3>
+                </caption>
+                <tbody>
+                    <tr>
+                        <th class="label">Amount</th>
+                        <td>
+                            <span>{{ form.details.loan.amount }}</span>
+                            {% for message in form.details.loan._messages.get('amount') %}
+                            <span class="error">{{ message }}</span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="label">Duration</th>
+                        <td>
+                            {{ form.details.loan.duration }}
+                            {% for message in form.details.loan._messages.get('duration') %}
+                            <span class="error">{{ message }}</span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="label">interest rate</th>
+                        <td>
+                            <span>{{ form.details.loan.interestRate }}</span>
+                            {% for message in form.details.loan._messages.get('interestRate') %}
+                            <span class="error">{{ message }}</span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="2">
+                        {% if form.editLoan %}
+                        <a href="{{ form.editLoan }}" up-target="#loan">Edit Loan</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+
+        </section>
+
+        <section id="property" class="card">
+            <table>
+                <caption>
+                    <h3>Property</h3>
+                </caption>
+                <tbody>
+                <tr>
+                    <th class="label">Value</th>
+                    <td><span>{{ form.details.property.value }}</span>
+                        {% for message in form.details.property._messages.get('value') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th class="label">Street</th>
+                    <td>
+                        <span>{{ form.details.property.propertyStreet }}</span><br>
+                        {% for message in form.details.property._messages.get('propertyStreet') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th class="label">Zip Code</th>
+                    <td>
+                        <span>{{ form.details.property.propertyZipCode }}</span>
+                        {% for message in form.details.property._messages.get('propertyZipCode') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th class="label">City</th>
+                    <td>
+                        <span>{{ form.details.property.propertyCity }}</span>
+                        {% for message in form.details.property._messages.get('propertyCity') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th class="label">Country</th>
+                    <td>
+                        <span>{{ form.details.property.propertyCountry }}</span>
+                        {% for message in form.details.property._messages.get('propertyCountry') %}
+                        <span class="error">{{ message }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="2">
+                        {% if form.editProperty %}
+                        <a href="{{ form.editProperty }}"
+                           up-target="#property">Edit Property</a>
+                        {% endif %}
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+        </section>
+    </article>
+
+    <div id="actions" class="card">
+
+
+        {% if form.submitAction %}
+        <form action="{{ form.submitAction }}" method="post">
+            <button value="submitDraft"
+                    id="submitDraft"
+                    type="submit">Submit the loan application
+            </button>
+        </form>
+        {% endif %}
+
+        {% if form.autofillAction %}
+        <form action="{{ form.autofillAction }}" method="post">
+            <button value="fillStuff"
+                    name="fillStuff"
+                    id="fillStuff"
+                    type="submit">Fill in random stuff.
+            </button>
+        </form>
+
+        {% endif %}
+    </div>
+{% endblock %}}
